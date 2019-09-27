@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* configurações globais */
+*{
+    margin: 0 auto;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 1%;
+}
+body{
+    background: #eee;
+}
+.row{
+    margin:0;
+}
