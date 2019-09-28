@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "start": "node server.js",
+    "postinstall": "ng build --aot --prod",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -22,6 +23,7 @@
     "@fortawesome/angular-fontawesome": "^0.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "express": "^4.17.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
