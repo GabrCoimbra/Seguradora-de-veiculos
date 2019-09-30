@@ -18,8 +18,8 @@ export class ConsultasService {
     return this.http.get(url);
   }
   public enviarDados(dados){
-    let options = { dados };
-    return this.http.post(`https://jsonplaceholder.typicode.com/posts`,options);
+
+    return this.http.post(`https://seguradora-back.herokuapp.com/cadastro.php`,dados);
   
   }
 }

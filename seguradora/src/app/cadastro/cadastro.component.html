@@ -9,13 +9,12 @@
                         <input type="text" class="form-control" id="nome" placeholder="Nome do Cliente" value="nome"
                             formControlName="nome" [ngClass]="{ 'is-invalid': submit && error('nome')}" required>
                         <div class="invalid-feedback">
-                            Ta ruim irmão!
+                            Campo Obrigatorio
                         </div>
                     </div>
                     <div class="form-group col-md-7">
                         <label for="sexo">Sexo</label>
-                        <select class="custom-select browser-default" name="sexo" id="sexo" required
-                            formControlName="sexo">
+                        <select class="custom-select browser-default" name="sexo" id="sexo" required formControlName="sexo">
                             <option value="">Selecione o sexo</option>
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
@@ -26,29 +25,44 @@
                         <input type="date" name="date" id="date" class="form-control" required formControlName="date" />
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="veiculo">Marca do Veículo</label>
-                        <select class="custom-select browser-default" name="marca" id="marca" required
-                            formControlName="marca" (change)="buscaVeiculos($event)">
-                            <option value="">Selecione a marca</option>
+                        <label for="date">Selecione a marca do Veículo</label>
+                        <div *ngFor="let i of dadosMarca">
+                            <div class="form-check">
+                                <input (change)="buscaVeiculos($event)" formControlName="marca" class="form-check-input"
+                                    type="radio" name="marca" id="{{ i.cod_marca}}" value="{{i.descricao_marca}}"
+                                    >
+                                <label class="form-check-label" for="{{i.cod_marca}}">
+                                    {{i.descricao_marca}}
+                                </label>
+                            </div>
+                        </div>
 
-                            <option *ngFor="let i of dadosMarca" value="{{i.cod_marca}}"> {{ i.descricao_marca}}
-                            </option>
-                        </select>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="veiculo">Selecione o Veículo</label>
-                        <select class="custom-select browser-default" name="veiculo" id="veiculo" required
-                            formControlName="veiculo">
-                            <option value="">Selecione o veículo</option>
 
-                            <option *ngFor="let b of dadosVeiculo" value="{{b.cod_veiculo}}"> {{ b.descricao_veiculo}}
-                            </option>
-                        </select>
+
+                    <div class="form-group col-md-6 " *ngIf="dadosVeiculo">
+                        <label for="date">Selecione o Veiculo</label>
+                        <div *ngFor="let b of dadosVeiculo">
+                            <div class="form-check" >
+                                <input  formControlName="veiculo" class="form-check-input"
+                                    type="radio" name="veiculo" id="{{ b.descricao_veiculo}}"  value="{{b.descricao_veiculo}}"
+                                    [attr.data-preco]=" b.valor_veiculo"
+                                    (click) = "setValor($event)"
+                                    >
+                                    <label class="form-check-label" for="{{b.descricao_veiculo}}">
+                                            {{b.descricao_veiculo}}
+                                    </label>
+                            </div>
+                        </div>
+
                     </div>
+
+
                 </div>
+
                 <div class="button-setup btn-just">
-                    <button class="btn btn-dark btn-sm" routerLink="/" >Voltar</button>
-                    <button class="btn btn-success btn-sm"  [disabled]="!form.valid" type="submit">Salvar</button>
+                    <button class="btn btn-dark btn-sm" routerLink="/">Voltar</button>
+                    <button class="btn btn-success btn-sm" [disabled]="!form.valid" type="submit">Salvar</button>
                 </div>
 
             </form>

@@ -13,7 +13,7 @@ export class ListagemService {
    * listagem dos usuarios 
    */
   public listagem() {
-    let url = `http://localhost:8080/seguradora/index.php`; 
+    let url = `https://seguradora-back.herokuapp.com/`; 
     return this.http.get(url);
   }
   public deletConsulta(id){
