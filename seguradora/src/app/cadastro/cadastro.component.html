@@ -1,30 +1,57 @@
-<form class="needs-validation" novalidate [formGroup]="form">
-    <div class="form-row">
-        <div class="col-md-4 mb-3">
-            <label for="nome">Nome</label>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="needs-validation" novalidate [formGroup]="form" (ngSubmit)="enviarDados(form)">
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="nome">Nome</label>
 
-            <input type="text" class="form-control" id="nome" placeholder="Nome do Cliente" value="nome"
-                formControlName="nome" [ngClass]="{ 'is-invalid': submit && error('nome')}" required>
-            <div class="invalid-feedback">
-                Ta ruim irmão!
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="sexo">Sexo</label>
-            <select class="custom-select browser-default" name="sexo" id="sexo" required>
-                <option value="">Selecione o sexo</option>
-                <option value="M">Masculino</option>
-                <option value="F">Feminino</option>
-            </select>
-            <div class="invalid-feedback">Example invalid custom select feedback</div>
-        </div>
-        <div class="mb-3 md-form">
-            <label for="date">Data de Nascimento</label>
-            <input type="date" name="date" id="date" class="form-control"required />
+                        <input type="text" class="form-control" id="nome" placeholder="Nome do Cliente" value="nome"
+                            formControlName="nome" [ngClass]="{ 'is-invalid': submit && error('nome')}" required>
+                        <div class="invalid-feedback">
+                            Ta ruim irmão!
+                        </div>
+                    </div>
+                    <div class="form-group col-md-7">
+                        <label for="sexo">Sexo</label>
+                        <select class="custom-select browser-default" name="sexo" id="sexo" required
+                            formControlName="sexo">
+                            <option value="">Selecione o sexo</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </div>
+                    <div class="mb-6 md-form">
+                        <label for="date">Data de Nascimento</label>
+                        <input type="date" name="date" id="date" class="form-control" required formControlName="date" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="veiculo">Marca do Veículo</label>
+                        <select class="custom-select browser-default" name="marca" id="marca" required
+                            formControlName="marca" (change)="buscaVeiculos($event)">
+                            <option value="">Selecione a marca</option>
+
+                            <option *ngFor="let i of dadosMarca" value="{{i.cod_marca}}"> {{ i.descricao_marca}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="veiculo">Selecione o Veículo</label>
+                        <select class="custom-select browser-default" name="veiculo" id="veiculo" required
+                            formControlName="veiculo">
+                            <option value="">Selecione o veículo</option>
+
+                            <option *ngFor="let b of dadosVeiculo" value="{{b.cod_veiculo}}"> {{ b.descricao_veiculo}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="button-setup btn-just">
+                    <button class="btn btn-dark btn-sm" routerLink="/" >Voltar</button>
+                    <button class="btn btn-success btn-sm"  [disabled]="!form.valid" type="submit">Salvar</button>
+                </div>
+
+            </form>
         </div>
     </div>
-    <div class="button-setup">
-        <button class="btn btn-primary btn-sm" type="submit">Salvar</button>
-    </div>
-
-</form>
+</div>
