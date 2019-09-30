@@ -1,0 +1,14 @@
+.btn-center{
+    position: relative;
+    top:2rem;
+    display: flex
+}
+.btn-center .icon{
+    margin-left:2rem;
+}
+.box-bottom{
+    margin-bottom: 1rem
+}
+.list-group-item{
+    min-width: 200px;
+}

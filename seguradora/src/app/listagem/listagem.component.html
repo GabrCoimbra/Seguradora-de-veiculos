@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="list-group">
+            <div class="col-md-12">
+                <div *ngFor="let i of dadosConsulta" class="box-bottom">
+                    <div class=" col-md-12 list-group-item list-group-item-action flex-column align-items-start" >
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1"  (click)="openDialog(i.id)"> {{ i.nome}}</h5>
+                            <div class="text-muted btn-center"> 
+                                    <div (click)="openDesc(i.id)"><fa-icon [icon]="detalhes" class="icon flaticon-customer" ></fa-icon></div>
+                                    <div (click)="openConfirm(i.id)"><fa-icon [icon]="delet" class="icon flaticon-customer" style="color:red"></fa-icon></div>
+                            </div>
+                        </div>
+                        <p class="mb-1"> <strong>Marca: </strong> {{ i.marca }}</p>
+                        <small class="text-muted"> <strong>Veículo:</strong>{{ i.veiculo }}</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
