@@ -7,22 +7,34 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { ListagemComponent } from './listagem/listagem.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { MatDialog, MatDialogModule } from '@angular/material';
+import { DescricaoComponent } from './descricao/descricao.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    CadastroComponent
+    CadastroComponent,
+    ListagemComponent,
+    ConfirmComponent,
+    DescricaoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
+  exports:[ConfirmComponent],
   providers: [HttpClient],
+  entryComponents: [ConfirmComponent,DescricaoComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
