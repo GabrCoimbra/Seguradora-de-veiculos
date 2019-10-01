@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { VERSION, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { ListagemService } from 'src/app/services/listagem.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm',
@@ -11,7 +13,7 @@ export class ConfirmComponent implements OnInit {
   confirmButtonText: string;
   cancelButtonText: string;
   id: number;
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<ConfirmComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<ConfirmComponent>, private ListagemService: ListagemService, private router:Router) {
     if (data) {
       this.message = data.message ;
       this.id = data.id;
@@ -23,7 +25,12 @@ export class ConfirmComponent implements OnInit {
   }
 
   onConfirmClick(): void {
+    this.ListagemService.deletConsulta(this.id).subscribe( consultas => {
+    }, erros => {
+
+    });
     this.dialogRef.close(true);
+
   }
   ngOnInit() {
   }
