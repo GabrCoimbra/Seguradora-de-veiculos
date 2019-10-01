@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ConsultasService } from 'src/app/services/consultas.service';
+import { VERSION, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
+import { MensagemComponent } from './../mensagem/mensagem.component';
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
@@ -13,7 +15,7 @@ export class CadastroComponent implements OnInit {
   mensagem: any;
   valor: any;
 
-  constructor(private fb: FormBuilder, private ConsultasService: ConsultasService) {
+  constructor(private fb: FormBuilder, private ConsultasService: ConsultasService, private dialog:MatDialog) {
     this.getter();
   }
 
@@ -51,13 +53,26 @@ export class CadastroComponent implements OnInit {
     this.form.value.valor = this.valor;
     const dadosForm = this.form.value;
     this.ConsultasService.enviarDados(dadosForm).subscribe(data => {
-      this.mensagem = data;
-      console.log('teste', data);
+      const dialogRefa = this.dialog.open(MensagemComponent,{
+        data:{
+          message: 'Cadastro com sucesso',
+          color: 'green',
+          buttonText: {
+            ok: 'Fechar'
+          }
+        }
+      });
     }, erros => {
-      console.log(erros);
+      const dialogRef = this.dialog.open(MensagemComponent,{
+        data:{
+          message: 'Erro ao cadastrar',
+          color: 'red' ,
+          buttonText: {
+            ok: 'Volar'
+          }
+        }
+      });
     });
-
-
   }
   ngOnInit() {
     this.form = this.fb.group({
