@@ -12,7 +12,12 @@ export class DescricaoComponent implements OnInit {
   dados:any;
   constructor(@Inject(MAT_DIALOG_DATA) private data: any, private dialogRef: MatDialogRef<DescricaoComponent>, private ListagemService: ListagemService) { 
     if (data) {
-        this.dados = this.ListagemService.descConsulta( this.id );
+        this.ListagemService.consultaId(data).subscribe( consultas => {
+          this.dados = consultas[0];
+          console.log(this.dados);
+        }, erros => {
+    
+        });
     }
   }
 
