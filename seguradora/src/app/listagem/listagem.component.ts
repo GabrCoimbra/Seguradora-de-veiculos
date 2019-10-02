@@ -21,7 +21,7 @@ export class ListagemComponent implements OnInit {
   constructor(private ListagemService: ListagemService, private dialog: MatDialog) {
     this.listar();
   }
-
+  //Abrir o modal de confirmação de exclusão de consulta
   openConfirm(id) {
     const dialogRef = this.dialog.open(ConfirmComponent,{
       data:{
@@ -34,6 +34,7 @@ export class ListagemComponent implements OnInit {
       }
     });
   }
+  //Abrir a descrição da consulta selecionada
   openDesc( id ){
     const dialogRef = this.dialog.open(DescricaoComponent,{
       data:{

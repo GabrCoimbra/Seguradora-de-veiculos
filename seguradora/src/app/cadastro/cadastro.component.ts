@@ -44,6 +44,7 @@ export class CadastroComponent implements OnInit {
       });
     }
   }
+  //Inserindo o valor do veiculo a variavel que será colocada no formulario
   setValor(veiculo: any){
      this.valor = veiculo.target.dataset.preco;
   }
@@ -53,6 +54,7 @@ export class CadastroComponent implements OnInit {
     this.form.value.valor = this.valor;
     const dadosForm = this.form.value;
     this.ConsultasService.enviarDados(dadosForm).subscribe(data => {
+      //Configurando mensagem de sucesso ao enviar o formulario
       const dialogRefa = this.dialog.open(MensagemComponent,{
         data:{
           message: 'Cadastro com sucesso',
@@ -63,6 +65,7 @@ export class CadastroComponent implements OnInit {
         }
       });
     }, erros => {
+      //Configurando mensagem de erro ao enviar o formulario
       const dialogRef = this.dialog.open(MensagemComponent,{
         data:{
           message: 'Erro ao cadastrar',
@@ -75,6 +78,7 @@ export class CadastroComponent implements OnInit {
     });
   }
   ngOnInit() {
+    //Iniciando o formulario
     this.form = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50),]],
       sexo: ['', [Validators.required]],

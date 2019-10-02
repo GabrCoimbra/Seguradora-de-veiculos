@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { VERSION, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mensagem',
@@ -11,26 +11,26 @@ export class MensagemComponent implements OnInit {
   message: string;
   confirmButtonText: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private router:Router , private dialogRef: MatDialogRef<MensagemComponent>) {
+  constructor(@Inject(MAT_DIALOG_DATA) private data: any, private router: Router, private dialogRef: MatDialogRef<MensagemComponent>) {
     if (data) {
-      this.message = data.message ;
+      this.message = data.message;
       if (data.buttonText) {
         this.confirmButtonText = data.buttonText.ok;
       }
     }
   }
-
-  ngOnInit() {
-  }
-  onConfirmClick( acao ){
+  //Verifica qual botão está sendo passado
+  onConfirmClick(acao) {
     let realiza = acao.target.outerText;
-    if (realiza === 'Fechar' ){
+    if (realiza === 'Fechar') {
       this.dialogRef.close(true);
       this.router.navigate(['/listagem'])
     }
-    else{
+    else {
       this.dialogRef.close(true);
     }
   }
 
+  ngOnInit() {
+  }
 }

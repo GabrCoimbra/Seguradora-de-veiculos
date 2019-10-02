@@ -23,7 +23,7 @@ export class ConfirmComponent implements OnInit {
       }
     }
   }
-
+  // Configurar ação de deletar a consulta
   onConfirmClick(): void {
     this.ListagemService.deletConsulta(this.id).subscribe( consultas => {
       window.location.reload();
