@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListagemService } from 'src/app/services/listagem.service';
-import { faTrashAlt, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faInfoCircle, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { VERSION, MatDialogRef, MatDialog, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { ConfirmComponent } from './../confirm/confirm.component';
 import { DescricaoComponent } from './../descricao/descricao.component';
@@ -14,9 +14,11 @@ export class ListagemComponent implements OnInit {
   dadosConsulta: any;
   delet = faTrashAlt;
   detalhes = faInfoCircle;
+  edit = faEdit;
+  dadosDesc:any;
   
   
-  constructor(private ListagemService: ListagemService, private dialog: MatDialog ) {
+  constructor(private ListagemService: ListagemService, private dialog: MatDialog) {
     this.listar();
   }
 
@@ -30,9 +32,6 @@ export class ListagemComponent implements OnInit {
           cancel: 'Cancelar'
         }
       }
-    });
-    dialogRef.afterClosed().subscribe((confirmed: boolean) => {
-      this.ngOnInit;
     });
   }
   openDesc( id ){
