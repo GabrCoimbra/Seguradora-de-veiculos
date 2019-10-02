@@ -18,8 +18,14 @@ export class ConsultasService {
     return this.http.get(url);
   }
   public enviarDados(dados){
-
     return this.http.post(`https://seguradora-back.herokuapp.com/cadastro.php`,dados);
-  
+  }
+
+  public consultaId(id){
+    let url = `https://seguradora-back.herokuapp.com/index.php?id=`+id; 
+    return this.http.get(url);
+  }
+  public editarDados(dados){
+    return this.http.post(`https://seguradora-back.herokuapp.com/editar.php`,dados);
   }
 }

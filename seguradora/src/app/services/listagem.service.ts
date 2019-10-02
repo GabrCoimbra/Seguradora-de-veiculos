@@ -17,11 +17,11 @@ export class ListagemService {
     return this.http.get(url);
   }
   public deletConsulta(id){
-    let url = `https://localhost:8080/delete?id=`+id; 
+    let url = `https://seguradora-back.herokuapp.com/excluir.php?id=`+id; 
     return this.http.get(url);
   }
-  public descConsulta(id){
-    let url = `https://jsonplaceholder.typicode.com/users`;//+id; 
+  public consultaId(id){
+    let url = `https://seguradora-back.herokuapp.com/index.php?id=`+id.id; 
     return this.http.get(url);
   }
 }
