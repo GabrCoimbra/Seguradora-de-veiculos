@@ -26,6 +26,8 @@ export class ConfirmComponent implements OnInit {
 
   onConfirmClick(): void {
     this.ListagemService.deletConsulta(this.id).subscribe( consultas => {
+      window.location.reload();
+      this.ngOnInit;
     }, erros => {
 
     });
