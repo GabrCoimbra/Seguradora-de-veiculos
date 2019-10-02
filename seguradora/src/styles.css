@@ -7,11 +7,66 @@
     font-family: 'Montserrat', sans-serif;
     border-radius: 1%;
 }
-body{
-    background: #eee;
-}
 .row{
     margin:0;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { background: #eee;margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fl-fl {
+    background: #383938;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 4px;
+    width: 190px;
+    position: fixed;
+    right: -150px;
+    z-index: 1000;
+    font: normal normal 10px Arial;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+
+.fa {
+    font-size: 20px;
+    color: #3597d3;
+    padding: 10px 0;
+    width: 40px;
+    margin-left: 6px;
+    margin-right: 8px;
+
+    position: relative;
+    top: 10px;
+}
+
+.fl-fl:hover {
+    right: 0;
+}
+
+.fl-fl a {
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    line-height: 43px;
+    vertical-align: top;
+}
+
+/* Distância entre os icons */
+
+.float-tw { top: 270px; }
+
+.float-lk { top: 325px; }
+
+
+@media(max-width: 964px){
+    .float-sm {
+      display: none;
+    }
+}
+
+@media (max-width:400px){
+    body{font-size:12px;}
+}
