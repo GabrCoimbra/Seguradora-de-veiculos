@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { MatDialog, MatDialogModule } from '@angular/material';
 import { DescricaoComponent } from './descricao/descricao.component';
+import { MensagemComponent } from './mensagem/mensagem.component';
+import { EditarComponent } from './editar/editar.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { DescricaoComponent } from './descricao/descricao.component';
     CadastroComponent,
     ListagemComponent,
     ConfirmComponent,
-    DescricaoComponent
+    DescricaoComponent,
+    MensagemComponent,
+    EditarComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,7 @@ import { DescricaoComponent } from './descricao/descricao.component';
   ],
   exports:[ConfirmComponent],
   providers: [HttpClient],
-  entryComponents: [ConfirmComponent,DescricaoComponent],
+  entryComponents: [ConfirmComponent,DescricaoComponent,MensagemComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
