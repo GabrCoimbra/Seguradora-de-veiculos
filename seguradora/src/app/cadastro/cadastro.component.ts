@@ -15,7 +15,7 @@ export class CadastroComponent implements OnInit {
   mensagem: any;
   valor: any;
 
-  constructor(private fb: FormBuilder, private ConsultasService: ConsultasService, private dialog:MatDialog) {
+  constructor(private fb: FormBuilder, private ConsultasService: ConsultasService, private dialog: MatDialog) {
     this.getter();
   }
 
@@ -45,8 +45,8 @@ export class CadastroComponent implements OnInit {
     }
   }
   //Inserindo o valor do veiculo a variavel que será colocada no formulario
-  setValor(veiculo: any){
-     this.valor = veiculo.target.dataset.preco;
+  setValor(veiculo: any) {
+    this.valor = veiculo.target.dataset.preco;
   }
 
   //Recebe os dados do formulario 
@@ -55,21 +55,34 @@ export class CadastroComponent implements OnInit {
     const dadosForm = this.form.value;
     this.ConsultasService.enviarDados(dadosForm).subscribe(data => {
       //Configurando mensagem de sucesso ao enviar o formulario
-      const dialogRefa = this.dialog.open(MensagemComponent,{
-        data:{
-          message: 'Cadastro com sucesso',
-          color: 'green',
-          buttonText: {
-            ok: 'Fechar'
+      if (data == "sucesso") {
+        const dialogRefa = this.dialog.open(MensagemComponent, {
+          data: {
+            message: 'Cadastro com sucesso',
+            color: 'green',
+            buttonText: {
+              ok: 'Fechar'
+            }
           }
-        }
-      });
+        });
+      }
+      else{
+        const dialogRefa = this.dialog.open(MensagemComponent, {
+          data: {
+            message: 'Erro ao cadastrar',
+            color: 'red',
+            buttonText: {
+              ok: 'Fechar'
+            }
+          }
+        });
+      }
     }, erros => {
       //Configurando mensagem de erro ao enviar o formulario
-      const dialogRef = this.dialog.open(MensagemComponent,{
-        data:{
+      const dialogRef = this.dialog.open(MensagemComponent, {
+        data: {
           message: 'Erro ao cadastrar',
-          color: 'red' ,
+          color: 'red',
           buttonText: {
             ok: 'Volar'
           }
