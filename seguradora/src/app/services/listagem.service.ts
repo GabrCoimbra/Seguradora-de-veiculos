@@ -21,7 +21,7 @@ export class ListagemService {
     return this.http.get(url);
   }
   public consultaId(id){
-    let url = `https://seguradora-back.herokuapp.com/index.php?id=`+id.id; 
+    let url = `https://seguradora-back.herokuapp.com/index.php?id=`+id.id+`&st=1`; 
     return this.http.get(url);
   }
 }
