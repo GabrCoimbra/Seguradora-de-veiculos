@@ -25,6 +25,7 @@ export class CadastroComponent implements OnInit {
   error(field: string) {
     return this.form.get(field).errors
   }
+  //Verificando se o usuario é maior de 18 anos
   MaiorQue18Anos(controle: AbstractControl) {
     const nascimento = controle.value;
     const [ano, mes, dia] = nascimento.split('-');
