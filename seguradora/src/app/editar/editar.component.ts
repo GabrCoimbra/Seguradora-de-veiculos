@@ -27,14 +27,11 @@ export class EditarComponent implements OnInit {
       this.dados = data[0];
       this.formulario();
     }, erros => {
-      console.log(erros);
     });
   }
   //Cria o formulario para a edição, adicionando os valores do cadastro
   formulario() {
-    console.log(this.dados.valor);
     this.form = this.fb.group({
-      
       id: [this.dados.id],
       nome: [this.dados.nome, [Validators.required, Validators.minLength(3), Validators.maxLength(50),]],
       sexo: [this.dados.sexo, [Validators.required]],
