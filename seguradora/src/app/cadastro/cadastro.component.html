@@ -4,12 +4,11 @@
             <form class="needs-validation" novalidate [formGroup]="form" (ngSubmit)="enviarDados(form)">
                 <div class="form-row">
                     <div class="col-md-12 mb-3">
-                        <label for="nome">Nome</label>
-
+                        <label for="nome">Nome: </label>
                         <input type="text" class="form-control" id="nome" placeholder="Nome do Cliente" value="nome"
-                            formControlName="nome" [ngClass]="{ 'is-invalid': submit && error('nome')}" required>
-                        <div class="invalid-feedback">
-                            Campo Obrigatorio
+                            formControlName="nome">
+                        <div *ngIf="nome.errors && nome.errors.minlength" class="invalid-feedback"  style="display:block">
+                            Mínimo de 3 letras
                         </div>
                     </div>
                     <div class="form-group col-md-7">
@@ -23,6 +22,9 @@
                     <div class="mb-6 md-form">
                         <label for="date">Data de Nascimento</label>
                         <input type="date" name="date" id="date" class="form-control" required formControlName="date" />
+                        <div *ngIf="nascimento.errors && nascimento.errors.menorDeIdade" class="invalid-feedback"  style="display:block">
+                            Necessario ser maior de idade
+                        </div>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="date">Selecione a marca do Veículo</label>
@@ -36,7 +38,9 @@
                                 </label>
                             </div>
                         </div>
-
+                        <div *ngIf="marca.errors && marca.errors.required" class="invalid-feedback"  style="display:block">
+                            Selecione uma das marcas
+                        </div>
                     </div>
 
 
@@ -53,6 +57,9 @@
                                             {{b.descricao_veiculo}}
                                     </label>
                             </div>
+                        </div>
+                        <div *ngIf="veiculo.errors && veiculo.errors.required" class="invalid-feedback"  style="display:block">
+                            Selecione um dos veiculos
                         </div>
 
                     </div>
